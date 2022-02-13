@@ -37,6 +37,7 @@ let card6 = document.getElementById('card-6')
 
 let roundN = 0
 let roundT = Math.floor(Math.random() * 5)
+console.log(roundT);
 let hideAll = function() {
     header.hide()
     stats.hide()
@@ -226,7 +227,9 @@ let replaceCard = function() {
         cardsLeft.innerHTML = "Sum : " + sum
             // console.log(player[2]);
         nextPlay()
-
+        if (roundN > roundT) {
+            showCards()
+        }
     }
 }
 
@@ -246,7 +249,7 @@ let dumpCard = function() {
                 // console.log(player[2])
             }
         }
-        console.log(player[2]);
+        // console.log(player[2]);
 
         card6.innerHTML = ""
         submittingCards.innerHTML = cardFigures[0]
@@ -260,7 +263,9 @@ let dumpCard = function() {
         cardsLeft.innerHTML = "Sum : " + sum
         audio.play()
         nextPlay()
-
+        if (roundN > roundT) {
+            showCards()
+        }
     }
 
 }
@@ -273,6 +278,9 @@ let drawCard = function() {
         card6.innerHTML = cardFigures[0]
         cardBuilding($('#card-' + cardList[0]), 0)
         roundN += 1
+        if (roundN > roundT) {
+            showCards()
+        }
     }
 }
 
@@ -284,6 +292,9 @@ let nextPlay = function() {
         player[3] = true
         icon6.classList.add("icon-active")
     }, 5000)
+    if (roundN > roundT) {
+        showCards()
+    }
 }
 
 let cardSum = function(e) {
@@ -325,9 +336,3 @@ var showCards = function() {
         } else { window.location.reload(); }
     }
 }
-
-setInterval(() => {
-    if (roundN > roundT) {
-        showCards()
-    }
-}, 2000);
