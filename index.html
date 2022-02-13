@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="cards_folder/cards.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" /> -->
+    <title>Punch Cards - hit it hard</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header" id="header">
+        <div class="pseudo"></div>
+        <div class="title">
+            <h1 id="main-title"> Punch Cards </h1>
+        </div>
+        <span><a href="#" id="show"></a></span>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats" id="stats">
+        <h4 id="player"> Player : Unknown</h4>
+        <h4 id="cards-left"></h4>
+    </div>
+
+    <!-- Elements -->
+    <div class="elements" id="elements">
+        <card class="drawing-cards" id="drawing-cards" onclick="drawCard()">
+            <figure class="playing-cards" id="drawing-cards-back"><img src="/asset/cards-back.jfif" alt="" width="200" height="400"></figure>
+            <coner>
+                <value></value>
+                <suit></suit>
+                </corner>
+                <center></center>
+                <corner>
+                    <value></value>
+                    <suit></suit>
+                </corner>
+        </card>
+
+
+        <div class="circle">
+            <span class="icon" id="a12-o"></span>
+            <span class="icon" id="a3-o"></span>
+            <span class="icon player-icon" id="a6-o"></span>
+            <span class="icon" id="a9-o"></span>
+        </div>
+
+        <div class="submitting-cards" id="submitting-cards"></div>
+    </div>
+
+    <!-- Footer-->
+    <div class="footer" id="footer">
+        <div class="cards-section" id="cards-section">
+        </div>
+
+        <div class="players-buttons">
+            <span><a href="#" id="replace" onclick="replaceCard()"></a></span>
+            <span><a href="#" id="dump" onclick="dumpCard()"></a></span>
+        </div>
+
+        <div class="card-6" id="card-6">
+        </div>
+    </div>
+
+    <!-- Form -->
+    <div class="form-wrapper">
+        <form>
+            <input type="text" placeholder="Enter a dope name" id="name" autocomplete="off" required>
+            <label id="select-avatar">Select an Avatar</label>
+            <div class="col-12 pb-5">
+                <input class="checkbox-icons" type="radio" name="icons" id="icon-1" checked value="0">
+                <label class="for-checkbox-icons" for="icon-1"><img src="/asset/monkey.jfif" width="100" height="100">
+						</label>
+                <!--
+						--><input class="checkbox-icons" type="radio" name="icons" id="icon-2" value="1">
+                <label class="for-checkbox-icons" for="icon-2"><img src="/asset/lion.jfif" width="100" height="100">
+						</label>
+                <!--
+						--><input class="checkbox-icons" type="radio" name="icons" id="icon-3" value="2">
+                <label class="for-checkbox-icons" for="icon-3"><img src="/asset/bull.jfif" width="100" height="100">
+						</label>
+                <input class="checkbox-icons" type="radio" name="icons" id="icon-4" value="3">
+                <label class="for-checkbox-icons" for="icon-4"><img src="/asset/bear.jfif" width="100" height="100">
+						</label>
+            </div>
+            <input type="submit" onclick="registration()" value="Let's Punch">
+        </form>
+    </div>
+    <audio src="/asset/whoos.mp3" id="audio"></audio>
+    <!-- Scripts --  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="cards_folder/cards.js"></script> -->
+    <script src="app.js"></script>
+</body>
+
+</html>
