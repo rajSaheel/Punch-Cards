@@ -346,16 +346,16 @@ let cardSum = function(e) {
 }
 
 var showCards = function() {
-    if (player[3]) {
-        let leaderBoard = []
-        for (let avatars of avatarsProfile) {
-            let sum = cardSum(avatars[2])
-            leaderBoard.push(sum)
 
-        }
-        console.log(leaderBoard);
-        if (alert("The winner is " + avatarsProfile[leaderBoard.indexOf(Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))][1] + " with the sum of " + Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))) {
+    let leaderBoard = []
+    for (let avatars of avatarsProfile) {
+        let sum = cardSum(avatars[2])
+        leaderBoard.push(sum)
 
-        } else { window.location.reload(); }
     }
+    console.log(leaderBoard);
+    if (alert("The winner is " + avatarsProfile[leaderBoard.indexOf(Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))][1] + " with the sum of " + Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))) {
+
+    } else { window.location.reload(); }
+
 }
