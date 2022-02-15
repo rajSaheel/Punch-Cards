@@ -41,7 +41,8 @@ let submittingCards = document.getElementById('submitting-cards')
 let card6 = document.getElementById('card-6')
 
 let roundN = 0
-let roundT = Math.floor(Math.random() * 5)
+let roundT = Math.ceil(Math.random() * 5)
+let playerN = Math.floor(Math.random() * 4)
     // console.log(roundT);
 console.log(roundT);
 let hideAll = function() {
@@ -285,7 +286,16 @@ let drawCard = function() {
 
 let nextPlay = function() {
     if (roundN > roundT && (player[3] == false)) {
-        showCards()
+        let leaderBoard = []
+        for (let avatars of avatarsProfile) {
+            let sum = cardSum(avatars[2])
+            leaderBoard.push(sum)
+
+        }
+        console.log(leaderBoard);
+        if (alert("Someone asked for Show; the winner is " + avatarsProfile[leaderBoard.indexOf(Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))][1] + " with the sum of " + Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))) {
+
+        } else { window.location.reload(); }
     }
     icon6.classList.remove("icon-active")
     setTimeout(function() {
@@ -354,7 +364,7 @@ var showCards = function() {
 
     }
     console.log(leaderBoard);
-    if (alert("The winner is " + avatarsProfile[leaderBoard.indexOf(Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))][1] + " with the sum of " + Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))) {
+    if (alert("You asked for Show; the winner is " + avatarsProfile[leaderBoard.indexOf(Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))][1] + " with the sum of " + Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))) {
 
     } else { window.location.reload(); }
 
