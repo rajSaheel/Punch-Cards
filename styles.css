@@ -26,6 +26,7 @@ body {
     right: 0;
     left: 0;
     padding: 0.1vh;
+    overflow: hidden;
 }
 
 .header {
@@ -427,9 +428,42 @@ span #show {
     margin: 1vh 4vh;
 }
 
-.fadeIn {
-    -webkit-transition: opacity 2.0s ease-in;
-    -moz-transition: opacity 2.0s ease-in;
-    -o-transition: opacity 2.0s ease-in;
-    opacity: 1;
+#replaceSub {
+    font-size: 2.9vh;
+    font-weight: bold;
+    /* letter-spacing: 2vh; */
+    transform-style: preserve-3d;
+    transform: translateZ(-2.5vh);
+    transition: transform 0.25s;
+    font-family: "Rubik";
+}
+
+#replaceSub:before,
+#replaceSub:after {
+    position: absolute;
+    content: "Sub Card";
+    height: 5.5vh;
+    width: 14.0vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5vh solid #f49f1c;
+    box-sizing: border-box;
+    border-radius: 0.5vh;
+}
+
+#replaceSub:before {
+    color: #000;
+    background: #f49f1c;
+    transform: rotateY(0deg) translateZ(2.5vh);
+}
+
+#replaceSub:after {
+    color: #f49f1c;
+    background: #000;
+    transform: rotateX(90deg) translateZ(2.5vh);
+}
+
+#replaceSub:hover {
+    transform: translateZ(-2.5vh) rotateX(-90deg);
 }

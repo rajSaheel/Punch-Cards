@@ -1,3 +1,8 @@
+if (window.innerWidth < 860) {
+    alert('Please open in a wider screen')
+}
+
+
 let header = $(".header")
 let stats = $(".stats")
 let elements = $(".elements")
@@ -37,6 +42,7 @@ let card6 = document.getElementById('card-6')
 
 let roundN = 0
 let roundT = Math.floor(Math.random() * 5)
+    // console.log(roundT);
 console.log(roundT);
 let hideAll = function() {
     header.hide()
@@ -193,7 +199,7 @@ var cardShuffling = function() {
 
 let replaceCard = function() {
 
-    if (player[3] & (card6.innerHTML.length > 0)) {
+    if (player[3] && (card6.innerHTML.length > 0)) {
         // console.log(player[2]);
 
         for (let currsuit of listSuit) {
@@ -227,9 +233,6 @@ let replaceCard = function() {
         cardsLeft.innerHTML = "Sum : " + sum
             // console.log(player[2]);
         nextPlay()
-        if (roundN > roundT) {
-            showCards()
-        }
     }
 }
 
@@ -263,9 +266,7 @@ let dumpCard = function() {
         cardsLeft.innerHTML = "Sum : " + sum
         audio.play()
         nextPlay()
-        if (roundN > roundT) {
-            showCards()
-        }
+
     }
 
 }
@@ -278,23 +279,45 @@ let drawCard = function() {
         card6.innerHTML = cardFigures[0]
         cardBuilding($('#card-' + cardList[0]), 0)
         roundN += 1
-        if (roundN > roundT) {
-            showCards()
-        }
     }
 }
 
 
 let nextPlay = function() {
+    if (roundN > roundT && (player[3] == false)) {
+        showCards()
+    }
     icon6.classList.remove("icon-active")
     setTimeout(function() {
         audio.play()
         player[3] = true
         icon6.classList.add("icon-active")
+        for (let nextAvatar of avatarsProfile) {
+            nextAvatar[2].reverse()
+            if (nextAvatar == player) {
+                continue
+            } else {
+                if (cardList[0] > nextAvatar[2[0]]) {
+                    nextavatar[2].splice(nextAvatar[2][0], 1, cardList[0])
+                    cardList.shift()
+                    cardFigures.shift()
+                    cardList.push(nextAvatar[2][0])
+                    cardFigures.push('<card class="playing-cards" id="card-' + cardList[cardList.length - 1] + '" onclick="highLighting(this.id)"><corner><value></value><suit></suit></corner><center></center><corner><value></value><suit></suit></corner></card>')
+                    submittingCards.innerHTML = cardFigures[cardFigures.length - 1]
+                    cardBuilding($("#card-" + cardList[cardList.length - 1]), cardList.length - 1)
+                } else {
+                    let temp = cardList.shift()
+                    cardList.push(temp)
+                    let tempF = cardFigures.shift()
+                    cardFigures.push(tempF)
+                    submittingCards.innerHTML = cardFigures[cardFigures.length - 1]
+                    cardBuilding($("#card-" + cardList[cardList.length - 1]), cardList.length - 1)
+                }
+            }
+        }
     }, 5000)
-    if (roundN > roundT) {
-        showCards()
-    }
+
+
 }
 
 let cardSum = function(e) {
