@@ -22,7 +22,7 @@ let icon12 = document.getElementById("a12-o")
 let icon3 = document.getElementById("a3-o")
 
 let avatars = document.querySelectorAll("input[name=icons]")
-let otherIcons = [icon9, icon12, icon3, ]
+let otherIcons = [icon9, icon12, icon3]
 let iconList = ["url('/asset/monkey.jfif') 10vh 10vh", "url('/asset/lion.jfif') 10vh 10vh", "url('/asset/bull.jfif') 10vh 10vh", "url('/asset/bear.jfif') 10vh 10vh"]
 
 let lion = ["url('/asset/lion.jfif')", 'Lion', [], false]
@@ -43,8 +43,7 @@ let card6 = document.getElementById('card-6')
 let roundN = 0
 let roundT = Math.ceil(Math.random() * 5)
 let playerN = Math.floor(Math.random() * 4)
-    // console.log(roundT);
-console.log(roundT);
+
 let hideAll = function() {
     header.hide()
     stats.hide()
@@ -99,8 +98,7 @@ let highLighting = function(e) {
     currentCard = e
 
     document.getElementById(e).classList.toggle('highlight')
-        // console.log(currentCard);
-        // e.classList.add('highlight')
+
 }
 
 let registration = function() {
@@ -121,9 +119,7 @@ let registration = function() {
             player = avatarsProfile[avatar.value]
             avatarsProfile.splice(avatar.value, 1, player)
             player[3] = true
-                // console.log(avatarsProfile);
 
-            // console.log(player);
         } else {
             otherIcons[i].style.background = iconList[avatar.value];
             otherIcons[i].style.backgroundSize = '10vh 10vh';
@@ -134,7 +130,7 @@ let registration = function() {
         }
     }
     for (let p = syncValue; p < 20; p = p + 4) {
-        // console.log(cardFigures[i])
+
         cardSection.innerHTML += cardFigures[p]
         cardBuilding($('#card-' + cardList[p]), p)
         playerF.push(cardFigures[p])
@@ -145,13 +141,12 @@ let registration = function() {
 
         let tempF = cardFigures.shift()
 
-        // return cardFigures, cardList
     }
 
     let sum = cardSum(player[2])
 
     cardsLeft.innerHTML = "Sum : " + sum
-        // console.log(player[2]);
+
 
 
 }
@@ -183,16 +178,15 @@ var cardShuffling = function() {
 
     audio.play()
 
-    // console.log(cardList);
+
     let z = 0
     for (let profile of avatarsProfile) {
-        // console.log(profile[2]);
+        // (profile[2]);
         for (let k = z; k < 20; k = k + 4) {
 
             profile[2].push(cardList[k])
                 // return cardFigures, cardList
         }
-        // console.log(profile[2]);
         z = z + 1
     }
 
@@ -201,7 +195,6 @@ var cardShuffling = function() {
 let replaceCard = function() {
 
     if (player[3] && (card6.innerHTML.length > 0)) {
-        // console.log(player[2]);
 
         for (let currsuit of listSuit) {
             let currnum = currsuit + currentCard.slice(6)
@@ -213,7 +206,7 @@ let replaceCard = function() {
                 player[2].splice(player[2].indexOf(currnum), 1)
                 $("#card-" + currnum).remove();
 
-                // console.log(player[2])
+                // (player[2])
             }
         }
 
@@ -232,14 +225,14 @@ let replaceCard = function() {
         audio.play()
         let sum = cardSum(player[2])
         cardsLeft.innerHTML = "Sum : " + sum
-            // console.log(player[2]);
+            // (player[2]);
         nextPlay()
     }
 }
 
 let dumpCard = function() {
     if ((player[3] == true) & (card6.innerHTML != "")) {
-        // console.log(player[2]);
+        // (player[2]);
 
         for (let currsuit of listSuit) {
             let currnum = currsuit + cardList[0].slice(1)
@@ -250,10 +243,10 @@ let dumpCard = function() {
                 player[2].splice(player[2].indexOf(currnum), 1)
                 $("#card-" + currnum).remove();
 
-                // console.log(player[2])
+                // (player[2])
             }
         }
-        // console.log(player[2]);
+        // (player[2]);
 
         card6.innerHTML = ""
         submittingCards.innerHTML = cardFigures[0]
@@ -274,7 +267,7 @@ let dumpCard = function() {
 
 let drawCard = function() {
     if (player[3]) {
-        // console.log(cardList);
+        // (cardList);
         // let ard = 20
         audio.play()
         card6.innerHTML = cardFigures[0]
@@ -292,41 +285,55 @@ let nextPlay = function() {
             leaderBoard.push(sum)
 
         }
-        console.log(leaderBoard);
         if (alert("Someone asked for Show; the winner is " + avatarsProfile[leaderBoard.indexOf(Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))][1] + " with the sum of " + Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))) {
 
         } else { window.location.reload(); }
     }
     icon6.classList.remove("icon-active")
-    setTimeout(function() {
+    const arr = [...avatarsProfile]
+    arr.splice(avatarsProfile.indexOf(player, 1))
+
+    let index = 0;
+
+    for (index = 0; index < 3; index++) {
+        (index);
+        rotate(index, avatarsProfile[index])
+    }
+
+    function rotate(indexArg, nextAvatar) {
+
+        setTimeout(function() {
+
+            if (cardList[0] > nextAvatar[2[0]]) {
+                nextavatar[2].splice(nextAvatar[2][0], 1, cardList[0])
+                cardList.shift()
+                cardFigures.shift()
+                cardList.push(nextAvatar[2][0])
+                cardFigures.push('<card class="playing-cards" id="card-' + cardList[cardList.length - 1] + '" onclick="highLighting(this.id)"><corner><value></value><suit></suit></corner><center></center><corner><value></value><suit></suit></corner></card>')
+                submittingCards.innerHTML = cardFigures[cardFigures.length - 1]
+                cardBuilding($("#card-" + cardList[cardList.length - 1]), cardList.length - 1)
+            } else {
+                let temp = cardList.shift()
+                cardList.push(temp)
+                let tempF = cardFigures.shift()
+                cardFigures.push(tempF)
+                submittingCards.innerHTML = cardFigures[cardFigures.length - 1]
+                cardBuilding($("#card-" + cardList[cardList.length - 1]), cardList.length - 1)
+            }
+
+            audio.play()
+            otherIcons[indexArg].classList.add("icon-active")
+            try { otherIcons[indexArg - 1].classList.remove("icon-active") } catch (e) {
+                (e); }
+        }, 2000 * (indexArg + 1))
+
+    }
+    setTimeout(() => {
         audio.play()
+        icon3.classList.remove("icon-active")
         player[3] = true
         icon6.classList.add("icon-active")
-        for (let nextAvatar of avatarsProfile) {
-            nextAvatar[2].reverse()
-            if (nextAvatar == player) {
-                continue
-            } else {
-                if (cardList[0] > nextAvatar[2[0]]) {
-                    nextavatar[2].splice(nextAvatar[2][0], 1, cardList[0])
-                    cardList.shift()
-                    cardFigures.shift()
-                    cardList.push(nextAvatar[2][0])
-                    cardFigures.push('<card class="playing-cards" id="card-' + cardList[cardList.length - 1] + '" onclick="highLighting(this.id)"><corner><value></value><suit></suit></corner><center></center><corner><value></value><suit></suit></corner></card>')
-                    submittingCards.innerHTML = cardFigures[cardFigures.length - 1]
-                    cardBuilding($("#card-" + cardList[cardList.length - 1]), cardList.length - 1)
-                } else {
-                    let temp = cardList.shift()
-                    cardList.push(temp)
-                    let tempF = cardFigures.shift()
-                    cardFigures.push(tempF)
-                    submittingCards.innerHTML = cardFigures[cardFigures.length - 1]
-                    cardBuilding($("#card-" + cardList[cardList.length - 1]), cardList.length - 1)
-                }
-            }
-        }
-    }, 5000)
-
+    }, 8000)
 
 }
 
@@ -363,7 +370,7 @@ var showCards = function() {
         leaderBoard.push(sum)
 
     }
-    console.log(leaderBoard);
+    (leaderBoard);
     if (alert("You asked for Show; the winner is " + avatarsProfile[leaderBoard.indexOf(Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))][1] + " with the sum of " + Math.min(leaderBoard[0], leaderBoard[1], leaderBoard[2], leaderBoard[3]))) {
 
     } else { window.location.reload(); }
