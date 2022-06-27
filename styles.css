@@ -132,6 +132,10 @@ label img {
     border-radius: 50%;
 }
 
+.input[type=radio]{
+    display:none;
+}
+
 input[type=radio]:checked+label>img,
 .icon-active {
     border: 1px solid #030a35;
