@@ -133,7 +133,7 @@ label img {
 }
 
 .input[type=radio]{
-    display:none;
+    visibility: hidden;
 }
 
 input[type=radio]:checked+label>img,
