@@ -23,16 +23,16 @@ let icon3 = document.getElementById("a3-o")
 let avatars = document.querySelectorAll("input[name=icons]")
 let otherIcons = [icon9, icon12, icon3]
 let iconList = [
-    "url('/asset/monkey_.jfif') 10vh 10vh",
-    "url('/asset/lion_.jfif') 10vh 10vh",
-    "url('/asset/bull_.jfif') 10vh 10vh",
-    "url('/asset/bear_.jfif') 10vh 10vh",
+    "url('/asset/monkey_.JFIF') 10vh 10vh",
+    "url('/asset/lion_.JFIF') 10vh 10vh",
+    "url('/asset/bull_.JFIF') 10vh 10vh",
+    "url('/asset/bear_.JFIF') 10vh 10vh",
 ]
 
-let lion = ["url('/asset/lion.jfif')", "Lion", [], false]
-let bull = ["url('/asset/bull.jfif')", "Bull", [], false]
-let ape = ["url('/asset/moneky.jfif')", "Ape", [], false]
-let bear = ["url('/asset/bear.jfif')", "Bear", [], false]
+let lion = ["url('/asset/lion.JFIF')", "Lion", [], false]
+let bull = ["url('/asset/bull.JFIF')", "Bull", [], false]
+let ape = ["url('/asset/moneky.JFIF')", "Ape", [], false]
+let bear = ["url('/asset/bear.JFIF')", "Bear", [], false]
 
 let avatarsProfile = [ape, lion, bull, bear]
 let player = []
